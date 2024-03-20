@@ -12,7 +12,38 @@
 ├── README.md
 ├── package-lock.json
 ├── package.json
-├── src
++---src
+|   |   index.ts
+|   |
+|   +---controllers
+|   |       home.controller.ts
+|   |       run.controller.ts
+|   |
+|   +---db
+|   |       index.ts
+|   |
+|   +---helpers
+|   |       cryptoHelper.ts
+|   |
+|   +---interfaces
+|   +---middlewares
+|   |       splitRequest.validation.ts
+|   |
+|   +---models
+|   |       person.model.ts
+|   |
+|   +---repositories
+|   |       run.repository.ts
+|   |
+|   +---routes
+|   |       index.ts
+|   |       run.routes.ts
+|   |
+|   \---services
+|           run.service.ts
+|
+\---test
+        app.unit.test.ts
 └── tsconfig.json
 ```
 
