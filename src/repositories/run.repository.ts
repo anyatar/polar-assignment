@@ -5,12 +5,14 @@ import Person from "../models/person.model";
 import Runner from "../models/person.model";
 import {RunStatType} from "../models/person.model";
 
+const USERS_TABLE = 'users';
+
 class RunRepository {
   
   save(person: Person, publicKey: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       connection.query<OkPacket>(
-        "INSERT INTO lets_run (name, age, city, publickKey) VALUES(?,?,?,?)",
+        `INSERT INTO ${USERS_TABLE} (name, age, city, publicKey) VALUES(?,?,?,?)`,
         [
           person.name,
           person.age,
@@ -28,7 +30,7 @@ class RunRepository {
   retrieveByName(name: string): Promise<Runner[]> {
     return new Promise((resolve, reject) => {
       connection.query<Runner[]>(
-        "SELECT * FROM lets_run WHERE name = ?",
+        `SELECT * FROM ${USERS_TABLE} WHERE name = ?`,
         [name],
         (err, res) => {
           if (err) reject(err);
@@ -41,7 +43,7 @@ class RunRepository {
   update(id: number, distance: number): Promise<number> {
     return new Promise((resolve, reject) => {
       connection.query<OkPacket>(
-        'UPDATE lets_run SET total_distance_run = total_distance_run + ? WHERE id = ?', [distance, id],
+        `UPDATE ${USERS_TABLE} SET total_distance_run = total_distance_run + ? WHERE id = ?`, [distance, id],
         (err, res) => {
           if (err) reject(err);
           else resolve(res.affectedRows);
@@ -56,15 +58,15 @@ class RunRepository {
         let params;
         switch (type) {
             case RunStatType.city: 
-                query = 'SELECT COUNT(*) AS ranking FROM users WHERE city = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)';
+                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE city = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)`;
                 params = [runner.city, runner.name];
                 break;
             case RunStatType.age:
-                query = 'SELECT COUNT(*) AS ranking FROM users WHERE age = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)';
+                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE age = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)`;
                 params = [runner.age, runner.name];
                 break;
             case RunStatType.overall:
-                query = 'SELECT COUNT(*) AS ranking FROM users WHERE total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)';
+                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)`;
                 params = [runner.name];
                 break;
             default:

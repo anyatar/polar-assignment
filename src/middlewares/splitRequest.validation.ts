@@ -4,9 +4,7 @@ export function splitRequest(req: Request, res: Response<any>, next: NextFunctio
   const { request } = req.body;
   const [data, signature] = request.split('.');
 
-  if (data !== undefined && signature !== undefined) {
-      next();
-  } else {
+  if (data == undefined || signature == undefined) {
       res.status(400).send("Invalid request format. Expected data and signature separated by '.'");
   }
   next();

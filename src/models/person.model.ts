@@ -27,6 +27,6 @@ export default interface Runner extends RowDataPacket {
   age: number;
   city: string;
   total_distance_run: number;
-  public_key: string;
+  publicKey: string;
 }
 

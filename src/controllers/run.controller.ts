@@ -34,12 +34,12 @@ export default class RunController {
   async update(req: Request, res: Response) {
 
     const { request } = req.body;
-    // validate request contains '.'
-    const [data, signature] = request.split('.');
-    const runScore:RunScore = JSON.parse(CryptoHelper.decryptData(data));
+    let [data, signature] = request.split('.');
+    const runScore:RunScore = JSON.parse(RunController.base64_decode(data).toString());
+    signature = RunController.base64_decode(signature);
 
     try {
-      const runner = await this.fetchValidatedRunner(runScore.name, request, signature);
+      const runner = await RunController.fetchValidatedRunner(runScore.name, data, signature);
       if (runner) {
           const affectedRows = await runService.update(runner.id, runScore.distance);
           if (affectedRows == 1) {
@@ -58,12 +58,11 @@ export default class RunController {
 
   async myStats(req: Request, res: Response) {
     const { request } = req.body;
-    // validate request contains '.'
     const [data, signature] = request.split('.');
-    const runStat:RunStat = JSON.parse(CryptoHelper.decryptData(data));
+    const runStat:RunStat = JSON.parse(RunController.base64_decode(data).toString());
 
     try {
-      const runner = await this.fetchValidatedRunner(runStat.name, request, signature);
+      const runner = await RunController.fetchValidatedRunner(runStat.name, data, signature);
       if (runner) {
         const ranking:number = await runService.getRanking(runner, runStat.type);
         if (ranking) {
@@ -83,7 +82,7 @@ export default class RunController {
   }
 
   
-  private async fetchValidatedRunner(name: string, request: string, signature: string) {
+  static async fetchValidatedRunner(name: string, request: string, signature: string) {
     const runners:Runner[] = await runService.retrieveRunners(name);
     for(const runner of runners) {
       if (CryptoHelper.validateEncyptedData(runner.publicKey, request, signature)) {
@@ -93,4 +92,7 @@ export default class RunController {
     return null;
   }
 
+  static base64_decode(data: any) {
+    return Buffer.from(data, 'base64');
+  }
 }

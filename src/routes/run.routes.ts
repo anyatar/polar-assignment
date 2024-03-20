@@ -15,6 +15,6 @@ router.post("/signup", controller.create);
 router.put("/update", splitRequest, controller.update);
 
 // Returns the users' ranking
-router.put("/mystats", splitRequest, controller.myStats);
+router.get("/mystats", splitRequest, controller.myStats);
 
 export default router;

@@ -1,35 +1,43 @@
-const { promisify } = require('util');
+import { generateKeyPair } from "crypto";
 const crypto = require('crypto');
-const generateKeyPairAsync = promisify(crypto.generateKeyPairSync);
 
 class CryptoHelper {
 
-    static readonly TYPE:string = 'rsa';
-    static readonly LENGTH:number = 2048;
-    static readonly exportOptions = {
-        format: "pem",
-        type: "pkcs1"
-    };
+    static readonly TYPE = "rsa";
+    static readonly LENGTH: number = 2048;
+    
+    public static async getKeyPair(): Promise<{ publicKey: string; privateKey: string; }> {
 
-    public static async getKeyPair():Promise<{ publicKey: string; privateKey: string; }> {
-        const { publicKey, privateKey } = await generateKeyPairAsync(CryptoHelper.TYPE, {
-            modulusLength: CryptoHelper.LENGTH,
+        return new Promise((resolve, reject) => {
+            generateKeyPair(CryptoHelper.TYPE, {
+                modulusLength: CryptoHelper.LENGTH,
+                publicKeyEncoding: {
+                    type: 'pkcs1',
+                    format: 'pem'
+                },
+                privateKeyEncoding: {
+                    type: 'pkcs1',
+                    format: 'pem'
+                }
+            }, (err, publicKey, privateKey) => {
+                if (err) return reject(err);
+                resolve({ publicKey, privateKey });
+            });
         });
-
-        return {
-            publicKey: publicKey.export(CryptoHelper.exportOptions),
-            privateKey: privateKey.export(CryptoHelper.exportOptions)
-        }
     }
 
     public static decryptData(request: any) {
-        return crypto.enc.Base64.parse(request).toString(crypto.enc.Utf8);
+        //return crypto.enc.Base64.parse(request).toString(crypto.enc.Utf8);
+        return Buffer.from(request, 'base64');
     }
 
-    public static validateEncyptedData(runnerPublicKey: string, request: string, signature: string): boolean {
+    public static validateEncyptedData(publicKey: string, request: string, signature: string): boolean {
 
-        const publicKey = crypto.enc.Utf8.parse(runnerPublicKey);
-        return crypto.verify(request, publicKey, 'SHA256withRSA', crypto.enc.Base64.parse(signature));
+        //const publicKey = crypto.enc.Utf8.parse(runnerPublicKey);
+        const verify = crypto.createVerify('RSA-SHA256');
+        verify.update(request);
+        return verify.verify(publicKey, signature, 'base64');
+        //return crypto.verify(request, publicKey, 'SHA256withRSA', Buffer.from(signature, 'base64'));
     }
 }
 

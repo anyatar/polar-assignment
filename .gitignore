@@ -1,6 +1,7 @@
 # Generated directories:
 .nyc_output/
 coverage/
-dist/
+build/
 node_modules/
 package-lock.json
+enc-test.ts
