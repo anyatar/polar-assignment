@@ -58,16 +58,16 @@ class RunRepository {
         let params;
         switch (type) {
             case RunStatType.city: 
-                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE city = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)`;
-                params = [runner.city, runner.name];
+                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE city = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ? and id = ?)`;
+                params = [runner.city, runner.name, runner.id];
                 break;
             case RunStatType.age:
-                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE age = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)`;
-                params = [runner.age, runner.name];
+                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE age = ? AND total_distance_run > (SELECT total_distance_run FROM users WHERE name = ? and id = ?)`;
+                params = [runner.age, runner.name, runner.id];
                 break;
             case RunStatType.overall:
-                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE total_distance_run > (SELECT total_distance_run FROM users WHERE name = ?)`;
-                params = [runner.name];
+                query = `SELECT COUNT(*) AS ranking FROM ${USERS_TABLE} WHERE total_distance_run > (SELECT total_distance_run FROM users WHERE name = ? and id = ?)`;
+                params = [runner.name, runner.id];
                 break;
             default:
               reject('Invalid stat option');

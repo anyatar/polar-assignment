@@ -75,6 +75,7 @@ $ npm run start
 ## Testing application 
 
 Please use attached [Postman](https://www.getpostman.com/) JSON [collection](./test/PolarLetsRun.postman_collection.json) in order to test API requests
+You can import this collaction with prepared requests for tests
 
 ![Postman tests](postman.png)
 
