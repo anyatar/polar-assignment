@@ -3,6 +3,5 @@
 coverage/
 build/
 node_modules/
-package-lock.json
 test/enc-test.ts
 dist
