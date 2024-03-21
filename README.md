@@ -14,42 +14,43 @@ The application is built according to compliance with the [system requirements](
 
 ## Project Structure
 ```bash
-├── README.md
-├── package-lock.json
-├── package.json
-+---src
-|   |   index.ts
-|   |
-|   +---controllers
-|   |       home.controller.ts
-|   |       run.controller.ts
-|   |
-|   +---db
-|   |       index.ts
-|   |
-|   +---helpers
-|   |       cryptoHelper.ts
-|   |
-|   +---interfaces
-|   +---middlewares
-|   |       splitRequest.validation.ts
-|   |
-|   +---models
-|   |       person.model.ts
-|   |
-|   +---repositories
-|   |       run.repository.ts
-|   |
-|   +---routes
-|   |       index.ts
-|   |       run.routes.ts
-|   |
-|   \---services
-|           run.service.ts
-|
-\---test
-        app.unit.test.ts
-└── tsconfig.json
+|-- Dockerfile
+|-- Part2-Theoretical.md
+|-- README.md
+|-- docker-compose.yml
+|-- image.png
+|-- init-scripts
+|   `-- init.sql
+|-- package-lock.json
+|-- package.json
+|-- postman.png
+|-- server.ts
+|-- src
+|   |-- controllers
+|   |   |-- home.controller.ts
+|   |   `-- run.controller.ts
+|   |-- db
+|   |   `-- index.ts
+|   |-- helpers
+|   |   `-- cryptoHelper.ts
+|   |-- index.ts
+|   |-- interfaces
+|   |-- middlewares
+|   |   `-- splitRequest.validation.ts
+|   |-- models
+|   |   `-- person.model.ts
+|   |-- repositories
+|   |   `-- run.repository.ts
+|   |-- routes
+|   |   |-- index.ts
+|   |   `-- run.routes.ts
+|   `-- services
+|       `-- run.service.ts
+|-- test
+|   |-- PolarLetsRun.postman_collection.json
+|   |-- app.unit.test.ts
+|   `-- enc-test.ts
+`-- tsconfig.json
 ```
 
 ## Database
