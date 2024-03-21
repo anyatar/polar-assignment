@@ -14,11 +14,11 @@ chai.use(chaiHttp);
 
 
 describe('Testing app controller', () => {
-    let controller;
+    let controller: RunController;
 
     const response = {
-        sendStatus: (status) => Promise.resolve(status),
-        status: (status) => {
+        sendStatus: (status: any) => Promise.resolve(status),
+        status: (status:any ) => {
             debugger;
             return Promise.resolve(status)
         }
@@ -50,14 +50,15 @@ describe('Testing app controller', () => {
 
     context('Testing RunController.signup', () => {
         it('signup response with status 200', (done) => {
-            const request = {
+            const request:any = {
                 body: {
                     "name": "John Doe",
                     "age": 50,
                     "city": "London"
                   }
             };
-
+            const response:any = {};
+            
             controller.create(request, response).then((status) => {
                 expect(status).to.equals(200);
                 done();
@@ -65,9 +66,10 @@ describe('Testing app controller', () => {
         });
 
         it('parseSendMail response with status 500', (done) => {
-            const request = {
+            const request:any = {
                 "name": "John Dummy"
             };
+            const response:any = {};
 
             controller.create(request, response).then((status) => {
                 expect(status).to.equals(500);
