@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "ts-node server.ts",
     "start": "tsc && node ./build/server.js",
-    "test": "mocha -r ts-node/register -- 'test/*.unit.test.ts' --exit"
+    "test": "mocha -r ts-node/register -- 'test/*.unit.test.js' --exit"
   },
   "author": "https://github.com/anyatar",
   "license": "ISC",
@@ -19,8 +19,10 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.3.3",
     "chai": "^5.1.0",
+    "chai-http": "^4.4.0",
     "jest": "^29.7.0",
     "mocha": "^10.3.0",
+    "node-fetch": "^2.6.1",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.2"

@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "bd6e9598-d6b1-4bcf-bb69-0e9409d6d36a",
+		"name": "PolarLetsRun",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8366757"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9001/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9001/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"age\": 50,\r\n  \"city\": \"London\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9001/update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"request\": \"eyJuYW1lIjoiSm9obiBEb2UiLCJkaXN0YW5jZSI6MTB9.wikuxj5whoF7zsinQ/r8L1sbsMGnKeixhuq6Iw2BP8EBneGjxEXdd2XsLzrBPsmj88+Em6c6Y94HDAn0Pp4y17OxWUdZ92jPv8tCHX8UUyF8Hh/1TWUHlrN8RnLw6enYx86eYB//PHj691ZrLtaHUAsI5U9cFxr2vPc0T4e7wGl7OmyA8pxLfVqCkUuKiCzn1VoDUaTzOmZQPo228cp3w9begTvlxgEaEr2IpC/QjaBxiLdyzhTTdfdzv/iRxiHFZZQJ0Irb6+wfrUOi5J/zLuiTGd0oO+A56HIHwp8Dqjcy3E09jrpE6SvSmtp1vqxiJiJ0kyIFtUb8gbcW5XmtjQ==\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9001/update second John doe",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"request\": \"eyJuYW1lIjoiSm9obiBEb2UiLCJkaXN0YW5jZSI6MTB9.wikuxj5whoF7zsinQ/r8L1sbsMGnKeixhuq6Iw2BP8EBneGjxEXdd2XsLzrBPsmj88+Em6c6Y94HDAn0Pp4y17OxWUdZ92jPv8tCHX8UUyF8Hh/1TWUHlrN8RnLw6enYx86eYB//PHj691ZrLtaHUAsI5U9cFxr2vPc0T4e7wGl7OmyA8pxLfVqCkUuKiCzn1VoDUaTzOmZQPo228cp3w9begTvlxgEaEr2IpC/QjaBxiLdyzhTTdfdzv/iRxiHFZZQJ0Irb6+wfrUOi5J/zLuiTGd0oO+A56HIHwp8Dqjcy3E09jrpE6SvSmtp1vqxiJiJ0kyIFtUb8gbcW5XmtjQ==\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9001/mystats",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"request\": \"eyJuYW1lIjoiSm9obiBEb2UiLCJ0eXBlIjoiY2l0eSJ9.Uj+fYFDtMVjXbVSJoMfSXvuwNZcal92HBL/1Z+x4lfU/G4ojFH+a/wBoCW2Sg8+O1BZzmIIhS5v2Z7KepOOg49Qkb9KODBrA24FN6nSw7aMab4oXAA2UlqzLED7EWlILWPCzcudtLlM581lTGbrp2PwfvRFbjoSWWwIpvKh+OdRy9BhT2NLlhHq+tf+DWqhqn6HckOvBKBoioP0pFiUvXu/kwGJ04FT1lbJgrcc7oXi+muZvlVGD3hFlDDSB7XGDVeiRLyhEWKqD9e1oAEwre/PZzc9oVSa3rXOfEkWJXhmMuwLT9wYSWpS0MtoBZ8KCMkfhiskvA8SG0NsyGCyikQ==\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/mystats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"mystats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9001/mystats age",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"request\": \"eyJuYW1lIjoiSm9obiBEb2UiLCJ0eXBlIjoiYWdlIn0=.4DnjF1v4s9nTFj0QbEnQwvFCT/gBR0sVHPRwTZLmBRIZwY8jLbDky7sIYjhDcN+BK409pwjq2QIPtKrpy5e3HGcZf6vczlE0NT1yGZ47dFaSf+0GrrMk9+pFG64zEj924eKooc4yCIp4P3jE2guuNr/GbEzIz/gI5r4t69lnZ+EoCXsc+0FdCZdQMT/1+qGny1Ps3L0LJ4pgR7R9WdO+a8S5LQ+lsN0ECxdty+J9vukH1jX05OuQH/VEI2e0qurBLO6NlH87lhY3+U9OoJveby7aHgk1Yql1Yd6/P3vq36ybOLbCLFoHMRHIcmD/fkAiwVUcGAuDCdykmoP6Vv0lXw==\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/mystats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"mystats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9001/mystats overall",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"request\": \"eyJuYW1lIjoiSm9obiBEb2UiLCJ0eXBlIjoib3ZlcmFsbCJ9.sNbyWTMAL1iYbJZnUfkzAVi3O3pfudDUOKupgBZeOrQF47XBhgP/46t5sKolWCRjDGIj5MIzfugmwHWwUgx6yqA+lNLVQmvb4uabxAs+qh+Sg+pHlRd48mnwye1mmUdxNVyNQUiapdqr3xeIOjM1Mz7y3YUirfv0+X7FVXzBUQfV7id1AVcUwF+6Eo2AqchZbSTaVWCtWSfYH08Yg5z+DqzaYanQgLitAeLztRq4QGvYtjh+xWRNmu3JgHYMqUk+z8Qo6hKtXUiplU1XW64r+Wqh1YktZ1zatzIdEByF3CkPMy8hDDyoyCr2F9UZo3GiqCOPI8utIB/bEYeKL8IY9g==\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/mystats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"mystats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

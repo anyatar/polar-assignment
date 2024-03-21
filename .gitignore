@@ -4,4 +4,5 @@ coverage/
 build/
 node_modules/
 package-lock.json
-enc-test.ts
+test/enc-test.ts
+dist
