@@ -35,10 +35,10 @@ export default class RunController {
 
     const { request } = req.body;
     let [data, signature] = request.split('.');
-    const runScore:RunScore = JSON.parse(RunController.base64_decode(data).toString());
-    signature = RunController.base64_decode(signature);
 
     try {
+      const runScore:RunScore = JSON.parse(RunController.base64_decode(data).toString());
+      signature = RunController.base64_decode(signature);
       const runner = await RunController.fetchValidatedRunner(runScore.name, data, signature);
       if (runner) {
           const affectedRows = await runService.update(runner.id, runScore.distance);
@@ -59,10 +59,11 @@ export default class RunController {
   async myStats(req: Request, res: Response) {
     const { request } = req.body;
     const [data, signature] = request.split('.');
-    const runStat:RunStat = JSON.parse(RunController.base64_decode(data).toString());
 
     try {
+      const runStat:RunStat = JSON.parse(RunController.base64_decode(data).toString());
       const runner = await RunController.fetchValidatedRunner(runStat.name, data, signature);
+
       if (runner) {
         const ranking:number = await runService.getRanking(runner, runStat.type);
         if (ranking) {
@@ -76,7 +77,7 @@ export default class RunController {
       }
     } catch (err) {
       res.status(500).send({
-        message: `Error retrieving stat for name=${runStat.name}. Error: ${err}`,
+        message: `Error retrieving stat. Error: ${err}`,
       });
     }
   }
